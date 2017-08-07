@@ -1,0 +1,13 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+#content {
+    width: 200px
+}
+
+#map {
+    width: 512px;
+    height: 512px;
+}
