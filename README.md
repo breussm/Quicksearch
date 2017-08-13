@@ -8,3 +8,6 @@
    * Load unpacked extension
    * Search your project folder
    * Activate your extension
+
+More information how to run the extension you can find here
+http://techapple.net/2015/09/how-to-install-load-unpacked-extension-in-google-chrome-browser-os-chromebooks/
