@@ -42,11 +42,7 @@ function writeToContent()
     var table = document.getElementById("table");
     for (var i = 0; i < result.length; i++) {
         table.insertRow(i).innerHTML = "<a href="+ result[i]  + " target=_blank" + " >"+ result[i] + "</a>"
-        //resultOfLinks = resultOfLinks + "<tr></tr>";
     }
-    //resultOfLinks = resultOfLinks + "</table>";
-    //console.error(resultOfLinks)
-    //document.getElementById("content").innerHTML = resultOfLinks;
 }
 
 function accordLinklistWithBookmarks()
@@ -68,10 +64,6 @@ function searchAccordsFromKeywordsInBookmarks()
                 console.error(bookmark);
             }
         })
-        /*if (bookmarks.indexOf(keyword) > -1 ) {
-            console.error("match: ", keyword);
-            result.push(linkList[i].raw);
-        }*/
     })
 }
 
