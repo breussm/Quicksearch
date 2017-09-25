@@ -8,7 +8,7 @@
 var data;
 
 /**
- * This listener is the interface between background and the conent.
+ * This listener is the interface between background and the content.
  * We need this for message passing.
  *
  * Fired when a message is sent from either an extension process (by runtime.sendMessage) or a content script
