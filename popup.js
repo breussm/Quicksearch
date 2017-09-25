@@ -12,7 +12,7 @@ function getInfosFromBackgroundPage() {
     //console.error(JSON.parse(infos.data).keywords);
     //console.error(JSON.parse(infos.data).linkList);
 
-    keywords = JSON.parse(infos.data).keywords;
+    keywords = JSON.parse(infos.data).keywords.split(",");
     linkList =  JSON.parse(infos.data).linkList;
 
     var bookmarkTreeNodes = chrome.bookmarks.getTree(
@@ -32,17 +32,47 @@ function getInfosFromBackgroundPage() {
 
 function showData()
 {
+    accordLinklistWithBookmarks();
+    searchAccordsFromKeywordsInBookmarks();
+    writeToContent();
+}
+
+function writeToContent()
+{
+    var table = document.getElementById("table");
+    for (var i = 0; i < result.length; i++) {
+        table.insertRow(i).innerHTML = "<a href="+ result[i]  + " target=_blank" + " >"+ result[i] + "</a>"
+        //resultOfLinks = resultOfLinks + "<tr></tr>";
+    }
+    //resultOfLinks = resultOfLinks + "</table>";
+    //console.error(resultOfLinks)
+    //document.getElementById("content").innerHTML = resultOfLinks;
+}
+
+function accordLinklistWithBookmarks()
+{
     for (var i in linkList) {
         if (bookmarks.indexOf(linkList[i].raw) > -1) {
             result.push(linkList[i].raw);
         }
     }
+}
 
-    for (var i = 0; i < result.length; i++) {
-        resultOfLinks = resultOfLinks + "<a href="+ result[i]  + " >"+ result[i] + "</a>";
-    }
-    document.getElementById("content").innerHTML = resultOfLinks;
-
+function searchAccordsFromKeywordsInBookmarks()
+{
+    keywords.forEach(function(keyword){
+        keyword = keyword.trim();
+        bookmarks.map(function(bookmark, index, arr){
+            if (bookmark.indexOf(keyword) > -1) {
+                result.push(bookmark);
+                console.error(bookmark);
+            }
+        })
+        /*if (bookmarks.indexOf(keyword) > -1 ) {
+            console.error("match: ", keyword);
+            result.push(linkList[i].raw);
+        }*/
+    })
 }
 
 
