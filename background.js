@@ -16,9 +16,11 @@ var data;
  * https://developer.chrome.com/extensions/runtime#event-onMessage
 */
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+  console.timeEnd("Start");
         data = message;
         chrome.browserAction.enable(JSON.parse(message).tabId);
         sendResponse();
+
     });
 
 /**
@@ -53,6 +55,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, updatedTab) {
  *
  */
 function queryTab(){
+    console.time("Start");
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
         chrome.browserAction.disable(tabs[0].id);
         chrome.tabs.sendMessage(tabs[0].id, tabs[0].id, function(response) {});
