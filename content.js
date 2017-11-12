@@ -53,6 +53,8 @@ window.onload = function() {
   }
  
  /**
+  * Find the keywords in the metatag
+  * @returns {string} the defined keywords in the metatag
   */
  var findKeywords = function() {
     console.time("Keywords")
