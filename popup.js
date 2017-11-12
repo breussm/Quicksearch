@@ -9,9 +9,6 @@ var resultOfLinks = "";
 var result = [];
 function getInfosFromBackgroundPage() {
     var infos = chrome.extension.getBackgroundPage();
-    //console.error(JSON.parse(infos.data).keywords);
-    //console.error(JSON.parse(infos.data).linkList);
-
     keywords = JSON.parse(infos.data).keywords.split(",");
     linkList =  JSON.parse(infos.data).linkList;
 
@@ -20,14 +17,6 @@ function getInfosFromBackgroundPage() {
             getBookmarks(bookmarkTreeNodes);
             showData();
         });
-
-
-
-    //console.error(infos.data);
-    //var keywords = infos.data.keywords;
-    //var content  = infos.data.content;
-
-
 }
 
 function showData()
@@ -61,7 +50,6 @@ function searchAccordsFromKeywordsInBookmarks()
         bookmarks.map(function(bookmark, index, arr){
             if (bookmark.indexOf(keyword) > -1) {
                 result.push(bookmark);
-                console.error(bookmark);
             }
         })
     })
